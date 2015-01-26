@@ -139,19 +139,24 @@ class IesFile(object):
         f.close()
 
 if __name__ == '__main__':
-    ies = IesFile(sys.argv[1])
-    if len(sys.argv) >= 3:
-        f = open(sys.argv[2], 'wb')
-        writer = csv.writer(f)
-        
-        f.write(','.join(c['name'] for c in ies.columns))
-        f.write('\n')
-        for row in ies.rows:
-            writer.writerow(row)
-        f.close()
+    if len(sys.argv) < 2:
+        print('Help: ./ies.py input_file <output_file>')
     else:
-        print([col['name'] for col in ies.columns])
-        for row in ies.rows:
-            print(row)
+        ies = IesFile(sys.argv[1])
+        if len(sys.argv) >= 3:
+            f = open(sys.argv[2], 'wb')
+            writer = csv.writer(f)
+            
+            f.write(','.join(c['name'] for c in ies.columns))
+            f.write('\n')
+            for row in ies.rows:
+                writer.writerow(row)
+            f.close()
+        else:
+            print([col['name'] for col in ies.columns])
+            for row in ies.rows:
+                print(row)
 
-    ies.close()
+            print('Help: ./ies.py input_file <output_file>')
+
+        ies.close()
