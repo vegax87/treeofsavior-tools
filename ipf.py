@@ -106,7 +106,9 @@ class IpfArchive(object):
             info._archivename = self.file_handle.read(info.archivename_length)
             info._filename = self.file_handle.read(info.filename_length)
 
-            # print(info.__dict__)
+            if info.filename.lower() in self.files:
+                # duplicate file name?!
+                raise Exception('Duplicate file name: %s' % info.filename)
 
             self.files[info.filename.lower()] = info
 
