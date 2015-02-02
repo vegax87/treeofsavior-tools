@@ -191,14 +191,3 @@ if __name__ == '__main__':
                 ipf.extract_all(args.directory or '.')
 
             ipf.close()
-
-def _old():
-    from os import listdir
-    from os.path import isfile, join
-    mypath = '''C:\TreeOfSavior\data'''
-    onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
-
-    ipf = IpfArchive(sys.argv[1])
-    ipf.extract_all(sys.argv[2])
-
-    ipf.close()
