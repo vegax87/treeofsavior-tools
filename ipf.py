@@ -236,7 +236,7 @@ if __name__ == '__main__':
                 print('{:<15}: {:}'.format('First file', ipf._filetable_offset))
                 print('{:<15}: {:}'.format('Unknown', ipf._archive_header_data[2]))
                 print('{:<15}: {:}'.format('Archive header', ipf._filefooter_offset))
-                print('{:<15}: {:}'.format('Format', ipf._format))
+                print('{:<15}: {:}'.format('Format', repr(ipf._format)))
                 print('{:<15}: {:}'.format('Base revision', ipf.base_revision))
                 print('{:<15}: {:}'.format('Revision', ipf.revision))
 
